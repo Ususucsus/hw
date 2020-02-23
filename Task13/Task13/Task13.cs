@@ -4,15 +4,15 @@ namespace Task13
 {
     class Task13
     {
-        private static void BubbleSort(float[] arrFloats)
+        private static void BubbleSort(float[] array)
         {
-            for (var i = 0; i < arrFloats.Length; ++i)
+            for (var i = 0; i < array.Length; ++i)
             {
-                for (var j = 1; j < arrFloats.Length - i; ++j)
+                for (var j = 1; j < array.Length - i; ++j)
                 {
-                    if (arrFloats[j - 1] > arrFloats[j])
+                    if (array[j - 1] > array[j])
                     {
-                        SwapFloats(ref arrFloats[j - 1], ref arrFloats[j]);
+                        SwapFloats(ref array[j - 1], ref array[j]);
                     }
                 }
             }
@@ -25,7 +25,7 @@ namespace Task13
             b = t;
         }
 
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             var testArray = new float[10];
             var random = new Random();
