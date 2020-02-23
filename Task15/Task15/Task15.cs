@@ -4,31 +4,43 @@ namespace Task15
 {
     class Task15
     {
-        private static void SortColumns(int[,] arrInts)
+        private static void SortColumns(int[,] array)
         {
-            for (var i = 0; i < arrInts.GetLength(1); ++i)
+            for (var i = 0; i < array.GetLength(1); ++i)
             {
-                for (var j = 1; j < arrInts.GetLength(1) - i; ++j)
+                for (var j = 1; j < array.GetLength(1) - i; ++j)
                 {
-                    if (arrInts[0, j - 1] > arrInts[0, j])
+                    if (array[0, j - 1] > array[0, j])
                     {
-                        SwapColumns(arrInts, j - 1, j);
+                        SwapColumns(array, j - 1, j);
                     }
                 }
             }
         }
 
-        private static void SwapColumns(int[,] arrInts, int column1, int column2)
+        private static void SwapColumns(int[,] array, int column1, int column2)
         {
-            for (var i = 0; i < arrInts.GetLength(0); ++i)
+            for (var i = 0; i < array.GetLength(0); ++i)
             {
-                var t = arrInts[i, column1];
-                arrInts[i, column1] = arrInts[i, column2];
-                arrInts[i, column2] = t;
+                var t = array[i, column1];
+                array[i, column1] = array[i, column2];
+                array[i, column2] = t;
             }
         }
 
-        static void Main(string[] args)
+        private static void PrintArray(int[,] array)
+        {
+            for (var i = 0; i < array.GetLength(0); ++i)
+            {
+                for (var j = 0; j < array.GetLength(1); ++j)
+                {
+                    Console.Write($"{array[i, j]} ");
+                }
+                Console.WriteLine();
+            }
+        }
+
+        private static void Main(string[] args)
         {
             var testArray = new int[4, 7];
             var random = new Random();
@@ -38,22 +50,14 @@ namespace Task15
                 for (var j = 0; j < 7; ++j)
                 {
                     testArray[i, j] = random.Next(28);
-                    Console.Write($"{testArray[i, j]} ");
                 }
-                Console.WriteLine();
             }
+
+            PrintArray(testArray);
 
             SortColumns(testArray);
 
-            Console.WriteLine("Sorted:");
-            for (var i = 0; i < 4; ++i)
-            {
-                for (var j = 0; j < 7; ++j)
-                {
-                    Console.Write($"{testArray[i, j]} ");
-                }
-                Console.WriteLine();
-            }
+            PrintArray(testArray);
         }
     }
 }
