@@ -6,20 +6,20 @@ namespace Task12
     {
         private static int Fibonacci(int n)
         {
-            var fib1 = 1;
-            var fib2 = 1;
+            var fibonacci1 = 1;
+            var fibonacci2 = 1;
 
             for (var i = 2; i < n; ++i)
             {
-                var tempFib = fib2;
-                fib2 += fib1;
-                fib1 = tempFib;
+                var tempFibonacci = fibonacci2;
+                fibonacci2 += fibonacci1;
+                fibonacci1 = tempFibonacci;
             }
 
-            return fib2;
+            return fibonacci2;
         }
 
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             Console.WriteLine($"Fibonacci(3): {Fibonacci(3)}");
         }
