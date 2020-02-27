@@ -1,7 +1,11 @@
-﻿namespace Task23
+﻿using System;
+
+namespace Task23
 {
     internal class StackCalculator
     {
+        private readonly IStack stack;
+
         public StackCalculator(IStack stack)
         {
             this.stack = stack;
@@ -19,6 +23,9 @@
 
         public void Add()
         {
+            if (stack.GetLength() < 2)
+                throw new InvalidOperationException();
+
             var value2 = stack.Pop();
             var value1 = stack.Pop();
 
@@ -27,6 +34,9 @@
 
         public void Subtract()
         {
+            if (stack.GetLength() < 2)
+                throw new InvalidOperationException();
+
             var value2 = stack.Pop();
             var value1 = stack.Pop();
 
@@ -35,6 +45,9 @@
 
         public void Multiply()
         {
+            if (stack.GetLength() < 2)
+                throw new InvalidOperationException();
+
             var value2 = stack.Pop();
             var value1 = stack.Pop();
 
@@ -43,12 +56,13 @@
 
         public void Divide()
         {
+            if (stack.GetLength() < 2)
+                throw new InvalidOperationException();
+
             var value2 = stack.Pop();
             var value1 = stack.Pop();
 
             stack.Push(value1 / value2);
         }
-
-        private readonly IStack stack;
     }
 }

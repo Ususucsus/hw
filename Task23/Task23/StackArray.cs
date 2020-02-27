@@ -4,6 +4,11 @@ namespace Task23
 {
     internal class StackArray : IStack
     {
+        public const int MaxSize = 1000;
+
+        private readonly int[] array;
+        private int head;
+
         public StackArray()
         {
             array = new int[1000];
@@ -19,7 +24,7 @@ namespace Task23
 
         public int Pop()
         {
-            if (this.IsEmpty())
+            if (IsEmpty())
                 throw new InvalidOperationException();
 
             var popValue = array[head - 1];
@@ -30,9 +35,7 @@ namespace Task23
         public bool IsEmpty()
             => head == 0;
 
-        private readonly int[] array;
-        private int head;
-
-        public const int MaxSize = 1000;
+        public int GetLength()
+            => head;
     }
 }
