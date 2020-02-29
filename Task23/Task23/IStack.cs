@@ -1,6 +1,6 @@
 ﻿namespace Task23
 {
-    internal interface IStack
+    public interface IStack
     {
         public void Push(int value);
         public int Pop();

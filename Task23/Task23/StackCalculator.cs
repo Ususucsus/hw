@@ -2,7 +2,7 @@
 
 namespace Task23
 {
-    internal class StackCalculator
+    public class StackCalculator
     {
         private readonly IStack stack;
 

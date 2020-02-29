@@ -2,7 +2,7 @@
 
 namespace Task23
 {
-    internal class StackArray : IStack
+    public class StackArray : IStack
     {
         public const int MaxSize = 1000;
 

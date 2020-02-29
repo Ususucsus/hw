@@ -2,7 +2,7 @@
 
 namespace Task23
 {
-    internal class StackList : IStack
+    public class StackList : IStack
     {
         private StackElement head;
         private int length;
