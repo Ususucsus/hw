@@ -6,14 +6,14 @@ using NUnit.Framework;
 
 namespace Task23.Test
 {
-    public class StackCalculatorViaListTest
+    public class StackCalculatorViaArrayTest
     {
         private StackCalculator stackCalculator;
 
         [SetUp]
         public void Setup()
         {
-            stackCalculator = new StackCalculator(new StackList());
+            stackCalculator = new StackCalculator(new StackArray());
         }
 
         [Test]
@@ -22,7 +22,7 @@ namespace Task23.Test
             stackCalculator.Push(99);
             stackCalculator.Push(99);
             stackCalculator.Add();
-            
+
             Assert.AreEqual(stackCalculator.Pop(), 198);
         }
 
@@ -64,7 +64,8 @@ namespace Task23.Test
             stackCalculator.Add();
 
             Assert.AreEqual(stackCalculator.Pop(), 0);
-;       }
+            ;
+        }
 
         [Test]
         public void SubtractionTwoPositiveValuesGivesCorrectAnswer()
@@ -203,7 +204,7 @@ namespace Task23.Test
             stackCalculator.Push(5);
             stackCalculator.Push(-10);
             stackCalculator.Divide();
-            
+
             Assert.AreEqual(stackCalculator.Pop(), 0);
 
         }
