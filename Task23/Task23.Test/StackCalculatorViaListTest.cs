@@ -227,5 +227,19 @@ namespace Task23.Test
             Assert.AreEqual(stackCalculator.Pop(), 0);
         }
 
+        [Test]
+        public void OperationOnEmptyStackShouldThrowException()
+        {
+            Assert.Throws<InvalidOperationException>(delegate { stackCalculator.Add(); });
+        }
+
+        [Test]
+        public void OperationOnStackWithOnlyOneElementShouldThrowException()
+        {
+            stackCalculator.Push(1);
+
+            Assert.Throws<InvalidOperationException>(delegate { stackCalculator.Add(); });
+        }
+
     }
 }
