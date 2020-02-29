@@ -4,19 +4,19 @@ namespace Task23
 {
     public class StackArray : IStack
     {
-        public const int MaxSize = 1000;
+        public readonly int MaxSize = 1000;
 
         private readonly int[] array;
         private int head;
 
         public StackArray()
         {
-            array = new int[1000];
+            array = new int[MaxSize];
         }
 
         public void Push(int value)
         {
-            if (head >= 1000)
+            if (head >= MaxSize)
                 throw new InvalidOperationException();
 
             array[head++] = value;

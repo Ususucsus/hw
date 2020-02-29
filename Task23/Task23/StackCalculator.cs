@@ -9,7 +9,7 @@ namespace Task23
         public StackCalculator(IStack stack)
         {
             this.stack = stack;
-        }
+        } 
 
         public void Push(int value)
         {
@@ -61,6 +61,9 @@ namespace Task23
 
             var value2 = stack.Pop();
             var value1 = stack.Pop();
+
+            if (value2 == 0)
+                throw new DivideByZeroException();
 
             stack.Push(value1 / value2);
         }
