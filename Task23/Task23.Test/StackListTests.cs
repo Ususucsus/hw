@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections;
-using System.Security;
 using NUnit.Framework;
 
 namespace Task23.Test

@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Collections.Immutable;
-using System.Text;
 using NUnit.Framework;
 
 namespace Task23.Test
