@@ -1,26 +1,33 @@
 ﻿using System;
+using System.Collections.Generic;
 using NUnit.Framework;
 
 namespace Task23.Test
 {
-    public class StackListTests
+    public class StackTests
     {
-        private StackList stack;
-
         [SetUp]
         public void Setup()
         {
-            stack = new StackList();
         }
 
+        private static IEnumerable<TestCaseData> Stacks
+            => new TestCaseData[]
+            {
+                new TestCaseData(new StackArray()), 
+                new TestCaseData(new StackList()), 
+            };
+
         [Test]
-        public void InitiallyStackShouldBeEmpty()
+        [TestCaseSource(nameof(Stacks))]
+        public void InitiallyStackShouldBeEmpty(IStack stack)
         {
             Assert.IsTrue(stack.IsEmpty());
         }
 
         [Test]
-        public void AfterPushStackShouldNotBeEmpty()
+        [TestCaseSource(nameof(Stacks))]
+        public void AfterPushStackShouldNotBeEmpty(IStack stack)
         {
             stack.Push(1);
 
@@ -28,14 +35,8 @@ namespace Task23.Test
         }
 
         [Test]
-        public void PushWorkFineWithinMaxSizeLimit()
-        {
-            for (var i = 0; i < 1000; ++i)
-                stack.Push(1);
-        }
-
-        [Test]
-        public void StackShouldWorkAsFILO()
+        [TestCaseSource(nameof(Stacks))]
+        public void StackShouldWorkAsFILO(IStack stack)
         {
             stack.Push(1);
             stack.Push(2);
@@ -44,19 +45,22 @@ namespace Task23.Test
         }
 
         [Test]
-        public void PopShouldThrowExceptionWhenStackIsEmpty()
+        [TestCaseSource(nameof(Stacks))]
+        public void PopShouldThrowExceptionWhenStackIsEmpty(IStack stack)
         {
             Assert.Throws<InvalidOperationException>(delegate { stack.Pop(); });
         }
 
         [Test]
-        public void LengthOfEmptyStackShouldBeZero()
+        [TestCaseSource(nameof(Stacks))]
+        public void LengthOfEmptyStackShouldBeZero(IStack stack)
         {
             Assert.AreEqual(stack.GetLength(), 0);
         }
 
         [Test]
-        public void LengthAfterPushPopShouldBeZero()
+        [TestCaseSource(nameof(Stacks))]
+        public void LengthAfterPushPopShouldBeZero(IStack stack)
         {
             stack.Push(1);
             stack.Pop();
@@ -65,7 +69,8 @@ namespace Task23.Test
         }
 
         [Test]
-        public void LengthOfFilledStackShouldBeCorrect()
+        [TestCaseSource(nameof(Stacks))]
+        public void LengthOfFilledStackShouldBeCorrect(IStack stack)
         {
             stack.Push(1);
             stack.Push(2);
@@ -75,7 +80,8 @@ namespace Task23.Test
         }
 
         [Test]
-        public void AfterPopLengthShouldDecrease()
+        [TestCaseSource(nameof(Stacks))]
+        public void AfterPopLengthShouldDecrease(IStack stack)
         {
             stack.Push(2);
             stack.Push(2);
@@ -86,6 +92,5 @@ namespace Task23.Test
 
             Assert.AreEqual(stack.GetLength(), length - 1);
         }
-
     }
 }
