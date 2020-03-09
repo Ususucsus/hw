@@ -2,7 +2,7 @@
 
 namespace Task22
 {
-    internal class HashTable
+    public class HashTable
     {
         public HashTable(int size)
         {

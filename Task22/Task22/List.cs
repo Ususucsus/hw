@@ -5,7 +5,7 @@ namespace Task22
     /// <summary>
     /// Represents a list of strings. Provides methods to insert, remove and change strings in the list.
     /// </summary>
-    internal class List
+    public class List
     {
         /// <summary>
         /// Represents a list element with data and pointer to next list element.
@@ -56,6 +56,14 @@ namespace Task22
             }
 
             this.length = array.Length;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="List"/> class.
+        /// </summary>
+        public List()
+        {
+            head = null;
         }
 
         /// <summary>
