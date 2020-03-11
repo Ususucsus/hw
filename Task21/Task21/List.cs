@@ -17,7 +17,7 @@ namespace Task21
             /// </summary>
             /// <param name="data">integer value</param>
             /// <param name="next">Pointer to next list element</param>
-            public ListElement(int data, ListElement next)
+            public ListElement(int data, ListElement? next)
             {
                 this.Data = data;
                 this.Next = next;
@@ -31,7 +31,7 @@ namespace Task21
             /// <summary>
             /// Pointer to next list element.
             /// </summary>
-            public ListElement Next;
+            public ListElement? Next;
         }
 
         /// <summary>
@@ -77,7 +77,7 @@ namespace Task21
             if (position < 0 || position >= length)
                 throw new ArgumentOutOfRangeException();
 
-            return GetNode(position).Data;
+            return GetNode(position)!.Data;
         }
 
         /// <summary>
@@ -91,7 +91,7 @@ namespace Task21
             if (position < 0 || position >= length)
                 throw new ArgumentOutOfRangeException();
 
-            GetNode(position).Data = value;
+            GetNode(position)!.Data = value;
         }
 
         /// <summary>
@@ -116,7 +116,7 @@ namespace Task21
             else
             {
                 var prevNode = GetNode(position - 1);
-                newNode.Next = prevNode.Next;
+                newNode.Next = prevNode!.Next;
                 prevNode.Next = newNode;
             }
 
@@ -134,14 +134,33 @@ namespace Task21
                 throw new ArgumentOutOfRangeException();
 
             if (position == 0)
-                head = head.Next;
+                head = head!.Next;
             else
             {
                 var prevNode = GetNode(position - 1);
-                prevNode.Next = GetNode(position).Next;
+                prevNode!.Next = GetNode(position)!.Next;
             }
 
             --length;
+        }
+
+        /// <summary>
+        /// Checks if value contains in list.
+        /// </summary>
+        /// <param name="value">Value to be checked</param>
+        /// <returns>true if value contains in list, false otherwise</returns>
+        public bool ContainsValue(int value)
+        {
+            var currentListElement = head;
+            while (currentListElement != null)
+            {
+                if (currentListElement.Data == value)
+                    return true;
+
+                currentListElement = head!.Next;
+            }
+
+            return false;
         }
 
         /// <summary>
@@ -163,14 +182,14 @@ namespace Task21
         /// </summary>
         /// <param name="position">Position of element which should be returned.</param>
         /// <returns>List element at given position or null when list element isn't exist at given position</returns>
-        private ListElement GetNode(int position)
+        private ListElement? GetNode(int position)
         {
             if (position < 0 || position >= length)
                 return null;
 
             var currentNode = head;
             for (var i = 0; i < position; ++i)
-                currentNode = currentNode.Next;
+                currentNode = currentNode!.Next;
 
             return currentNode;
         }
@@ -202,7 +221,7 @@ namespace Task21
         /// <summary>
         /// Head list element.
         /// </summary>
-        private ListElement head;
+        private ListElement? head;
 
         /// <summary>
         /// Length of the list.

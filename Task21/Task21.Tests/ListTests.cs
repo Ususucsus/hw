@@ -146,5 +146,33 @@ namespace Task21.Test
 
             Assert.IsTrue(newList.IsEmpty());
         }
+
+        [Test]
+        public void ContainsValueOnEmptyListShouldWorkCorrect()
+        {
+            Assert.IsFalse(list.ContainsValue(5));
+        }
+
+        [Test]
+        public void ContainsValueAfterInsertShouldWorkCorrect()
+        {
+            list.Insert(0, 5);
+
+            Assert.IsTrue(list.ContainsValue(5));
+            Assert.IsFalse(list.ContainsValue(4));
+        }
+
+        [Test]
+        public void ContainsValueAfterRemoveShouldWorkCorrect()
+        {
+            arrayList.Remove(0);
+
+            Assert.IsTrue(arrayList.ContainsValue(2));
+            Assert.IsFalse(arrayList.ContainsValue(1));
+
+            arrayList.Remove(0);
+
+            Assert.IsFalse(arrayList.ContainsValue(2));
+        }
     }
 }
