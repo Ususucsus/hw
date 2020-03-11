@@ -100,7 +100,7 @@ namespace Task21
         /// <param name="position">Position of the new list element</param>
         /// <param name="value">Value of the new list element</param>
         /// <exception cref="ArgumentOutOfRangeException">Position is less than 0 or more than length of the list</exception>
-        public void Insert(int position, int value)
+        public virtual void Insert(int position, int value)
         {
             if (position < 0 || position > length)
                 throw new ArgumentOutOfRangeException();
