@@ -18,12 +18,12 @@ namespace Task21
         /// </summary>
         /// <param name="position">Position of new list element</param>
         /// <param name="value">Value to be inserted</param>
-        /// <exception cref="InvalidOperationException">If element already contains in list</exception>
+        /// <exception cref="ValueAlreadyExistException">If element already contains in list</exception>
         public override void Insert(int position, int value)
         {
             if (base.ContainsValue(value) == true)
             {
-                throw new InvalidOperationException();
+                throw new ValueAlreadyExistException();
             }
 
             base.Insert(position, value);

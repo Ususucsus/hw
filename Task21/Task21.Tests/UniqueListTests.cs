@@ -28,7 +28,7 @@ namespace Task21.Test
         {
             uniqueList.Insert(0, 1);
 
-            Assert.Throws<InvalidOperationException>(() => uniqueList.Insert(0, 1));
+            Assert.Throws<ValueAlreadyExistException>(() => uniqueList.Insert(0, 1));
         }
     }
 }
