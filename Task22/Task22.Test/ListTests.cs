@@ -6,7 +6,7 @@ using NUnit.Framework;
 
 namespace Task22.Test
 {
-    public class Tests
+    public class ListTests
     {
         private List list;
         private List arrayList;
