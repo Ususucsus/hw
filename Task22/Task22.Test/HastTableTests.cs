@@ -10,7 +10,7 @@ namespace Task22.Test
         [SetUp]
         public void Setup()
         {
-            hashTable = new HashTable(5);
+            hashTable = new HashTable(5, new LengthHashFunction());
         }
 
         [Test]

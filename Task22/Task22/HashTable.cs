@@ -11,13 +11,16 @@ namespace Task22
         /// Initializes a new instance of <see cref="HashTable"/> class.
         /// </summary>
         /// <param name="size">Maximum number of different hash codes</param>
-        public HashTable(int size)
+        /// <param name="hashFunction">Hash function object for calculating hash</param>
+        public HashTable(int size, IHashFunction hashFunction)
         {
             this.size = size;
             array = new List[size];
 
             for (var i = 0; i < size; ++i) 
                 array[i] = new List(new string[] { } );
+
+            this.hashFunction = hashFunction;
         }
 
         /// <summary>
@@ -77,7 +80,7 @@ namespace Task22
         /// <param name="value">Value form which hash will be calculated</param>
         /// <returns>Hash within limits</returns>
         private int GetHash(string value)
-            => Math.Abs(value.GetHashCode()) % size;
+            => Math.Abs(hashFunction.GetHashValue(value)) % size;
 
         /// <summary>
         /// Maximum number of different hash codes.
@@ -88,5 +91,10 @@ namespace Task22
         /// Array to contain lists with same values with same hash codes.
         /// </summary>
         private readonly List[] array;
+
+        /// <summary>
+        /// Hash function for calculating hash.
+        /// </summary>
+        private readonly IHashFunction hashFunction;
     }
 }
