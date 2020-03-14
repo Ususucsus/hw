@@ -8,7 +8,7 @@ build:
 
 test_script:
   - dotnet test TreeCalculator/TreeCalculator.sln
-  - .\packages\OpenCover.4.6.519\tools\OpenCover.Console.exe -register:user -target:"%xunit20%\xunit.console.x86.exe" -targetargs:"YourTestDll -noshadow" -output:"coverage.xml" -filter:"+[YourSUTNamepace*]* -[YourTestNamespace*]*"
+  - .\packages\OpenCover.4.6.519\tools\OpenCover.Console.exe -register:user -target:"%xunit20%\xunit.console.x86.exe" -targetargs:"TreeCalculator\TreeCalculator.Test\bin\Debug\netcoreapp3.1\TreeCalculator.Test.dll -noshadow" -output:"coverage.xml" -filter:"+[TreeCalculator*]* -[TreeCalculator.Test*]*"
 
 after_test:
   - ps: |
