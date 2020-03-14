@@ -7,4 +7,5 @@ build:
   project: Task21/Task21.sln
 
 test_script:
-  - dotnet test Test21/Test21.sln
+  - dotnet test Task21/Task21.sln
+
