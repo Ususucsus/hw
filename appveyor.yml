@@ -10,5 +10,5 @@ build:
 
 test_script:
   - dotnet test TreeCalculator/TreeCalculator.sln
-  - OpenCover.Console.exe -register:user -target:"%xunit20%\xunit.console.x86.exe" -targetargs:"C:\projects\hw\TreeCalculator\TreeCalculator.Test\bin\Debug\netcoreapp3.1\TreeCalculator.Test.dll -noshadow" -filter:"+[TreeCalculator*]* -[TreeCalculator.Test*]*" -output:".\MyProject_coverage.xml"
-  - codecov -f "MyProject_coverage.xml"
+  - OpenCover.Console.exe -register:user -target:"C:/Program Files/dotnet/dotnet.exe" -targetargs:"test --logger:trx;LogFileName=results.trx /p:DebugType=full C:\projects\hw\TreeCalculator\TreeCalculator.Test\TreeCalculator.Test.csproj" -filter:"+[TreeCalculator*]* -[TreeCalculator.Test*]*" -output:".\my_app_coverage.xml"
+  - codecov -f .\valit_coverage.xml -t 5382e166-51cc-44e6-bf48-6a45c18b6ebd
