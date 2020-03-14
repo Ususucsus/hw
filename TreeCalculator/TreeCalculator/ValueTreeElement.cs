@@ -3,7 +3,7 @@
     /// <summary>
     /// Represents list element with value in it.
     /// </summary>
-    public class ValueListElement : ITreeElement
+    public class ValueTreeElement : ITreeElement
     {
         /// <summary>
         /// Value of the element.
@@ -11,21 +11,21 @@
         private readonly int value;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ValueListElement"/> class.
+        /// Initializes a new instance of the <see cref="ValueTreeElement"/> class.
         /// </summary>
         /// <param name="value">Value of the element</param>
-        public ValueListElement(int value)
+        public ValueTreeElement(int value)
         {
             this.value = value;
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ValueListElement"/> class.
+        /// Initializes a new instance of the <see cref="ValueTreeElement"/> class.
         /// </summary>
         /// <param name="value">Value of the element</param>
         /// <param name="leftTreeElement">Pointer to the left son</param>
         /// <param name="rightTreeElement">Pointer to the right son</param>
-        public ValueListElement(int value, ITreeElement leftTreeElement, ITreeElement rightTreeElement)
+        public ValueTreeElement(int value, ITreeElement leftTreeElement, ITreeElement rightTreeElement)
         {
             this.value = value;
             this.LeftTreeElement = leftTreeElement;
