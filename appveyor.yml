@@ -10,11 +10,5 @@ build:
 
 test_script:
   - dotnet test TreeCalculator/TreeCalculator.sln
-  - .\packages\OpenCover.4.6.519\tools\OpenCover.Console.exe -register:user -target:"%xunit20%\xunit.console.x86.exe" -targetargs:"C:\projects\hw\TreeCalculator\TreeCalculator.Test\bin\Debug\netcoreapp3.1\TreeCalculator.Test.dll" -output:"coverage.xml" -filter:"+[TreeCalculator*]* -[TreeCalculator.Test*]*"
-  - dir C:\projects\hw\TreeCalculator\TreeCalculator.Test\bin
-
-after_test:
-  - ps: |
-      $env:PATH = 'C:\msys64\usr\bin;' + $env:PATH
-      Invoke-WebRequest -Uri 'https://codecov.io/bash' -OutFile codecov.sh
-      bash codecov.sh -f "coverage.xml" -t 5382e166-51cc-44e6-bf48-6a45c18b6ebd
+  - OpenCover.Console.exe -register:user -target:"%xunit20%\xunit.console.x86.exe" -targetargs:"C:\projects\hw\TreeCalculator\TreeCalculator.Test\bin\Debug\netcoreapp3.1\TreeCalculator.Test.dll -noshadow" -filter:"+[TreeCalculator*]* -[TreeCalculator.Test*]*" -output:".\MyProject_coverage.xml"
+  - codecov -f "MyProject_coverage.xml"
