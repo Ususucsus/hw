@@ -32,5 +32,12 @@ namespace TreeCalculator.Test
             Assert.Throws<InvalidOperationException>(() => treeElement.LeftTreeElement = new ValueTreeElement(5));
             Assert.Throws<InvalidOperationException>((() => treeElement.RightTreeElement = new ValueTreeElement(5)));
         }
+
+        [Test]
+        public void GetsSubTreesShouldReturnNull()
+        {
+            Assert.IsNull(treeElement.LeftTreeElement);
+            Assert.IsNull(treeElement.RightTreeElement);
+        }
     }
 }
