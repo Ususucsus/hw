@@ -41,7 +41,7 @@ namespace TreeCalculator.Test
         [TestCase("(1)")]
         [TestCase("abc")]
         [TestCase("(abc 5 5)")]
-        [TestCase("(5 5 5)")]
+        [TestCase("(5 55 5)")]
         [TestCase("(+ (+ 5 5) (+ 5))")]
         [TestCase("(+ () ())")]
         [TestCase("(+ + 5)")]
