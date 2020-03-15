@@ -81,10 +81,10 @@ namespace TreeCalculator.Test
                     new ValueTreeElement(5), new ValueTreeElement(5)).LeftTreeElement = null);
             Assert.Throws<ArgumentNullException>(() =>
                 new MultiplicationOperationTreeElement(
-                    new ValueTreeElement(5), new ValueTreeElement(5)).LeftTreeElement = null);
+                    new ValueTreeElement(5), new ValueTreeElement(5)).RightTreeElement = null);
             Assert.Throws<ArgumentNullException>(() =>
                 new SubtractionOperationTreeElement(
-                    new ValueTreeElement(5), new ValueTreeElement(5)).LeftTreeElement = null);
+                    new ValueTreeElement(5), new ValueTreeElement(5)).RightTreeElement = null);
         }
 
         [Test]
