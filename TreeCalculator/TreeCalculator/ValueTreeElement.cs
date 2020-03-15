@@ -1,4 +1,6 @@
-﻿namespace TreeCalculator
+﻿using System;
+
+namespace TreeCalculator
 {
     /// <summary>
     /// Represents list element with value in it.
@@ -20,27 +22,24 @@
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ValueTreeElement"/> class.
-        /// </summary>
-        /// <param name="value">Value of the element</param>
-        /// <param name="leftTreeElement">Pointer to the left son</param>
-        /// <param name="rightTreeElement">Pointer to the right son</param>
-        public ValueTreeElement(int value, ITreeElement leftTreeElement, ITreeElement rightTreeElement)
-        {
-            this.value = value;
-            this.LeftTreeElement = leftTreeElement;
-            this.RightTreeElement = rightTreeElement;
-        }
-
-        /// <summary>
         /// Gets or sets pointer to the left son.
         /// </summary>
-        public ITreeElement LeftTreeElement { get; set; }
+        /// <exception cref="InvalidOperationException">Attempt to set something to left subtree</exception>
+        public ITreeElement LeftTreeElement
+        {
+            get => null;
+            set => throw new InvalidOperationException("Value element could not contain sub trees");
+        }
 
         /// <summary>
         /// Gets or sets pointer to the right son.
         /// </summary>
-        public ITreeElement RightTreeElement { get; set; }
+        /// <exception cref="InvalidOperationException">Attempt to set something to right subtree</exception>
+        public ITreeElement RightTreeElement
+        {
+            get => null;
+            set => throw new InvalidOperationException("Value element could not contain sub trees");
+        }
 
         /// <summary>
         /// Returns value of the element

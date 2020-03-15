@@ -1,3 +1,5 @@
+using System;
+
 namespace TreeCalculator.Test
 {
     using NUnit.Framework;
@@ -25,22 +27,10 @@ namespace TreeCalculator.Test
         }
 
         [Test]
-        public void GetsAndSetsSubTreesShouldWorkCorrect()
+        public void AttemptToSetSubTreeShouldThrowException()
         {
-            this.treeElement.LeftTreeElement = new ValueTreeElement(4);
-            this.treeElement.RightTreeElement = new ValueTreeElement(6);
-
-            Assert.AreEqual(this.treeElement.LeftTreeElement.Evaluate(), 4);
-            Assert.AreEqual(this.treeElement.RightTreeElement.Evaluate(), 6);
-        }
-
-        [Test]
-        public void InitWithSubTreesShouldWorkCorrect()
-        {
-            var tree = new ValueTreeElement(5, new ValueTreeElement(4), new ValueTreeElement(6));
-
-            Assert.AreEqual(tree.LeftTreeElement.Evaluate(), 4);
-            Assert.AreEqual(tree.RightTreeElement.Evaluate(), 6);
+            Assert.Throws<InvalidOperationException>(() => treeElement.LeftTreeElement = new ValueTreeElement(5));
+            Assert.Throws<InvalidOperationException>((() => treeElement.RightTreeElement = new ValueTreeElement(5)));
         }
     }
 }
