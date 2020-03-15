@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 namespace TreeCalculator
 {
@@ -6,7 +7,14 @@ namespace TreeCalculator
     {
         public static void Main()
         {
-            Console.WriteLine("Hello World!");
+            var evaluator = new Evaluator();
+
+            const string path = "expression.txt";
+
+            using var file = new StreamReader(path);
+
+            var expressionLine = file.ReadLine();
+            Console.WriteLine($"Result: {evaluator.EvaluateExpression(expressionLine)}");
         }
     }
 }
