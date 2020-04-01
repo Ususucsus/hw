@@ -1,25 +1,29 @@
-﻿using System;
+﻿// <copyright file="Program.cs" company="Artur Usmanov">
+//      Licensed under the MIT License. See LICENSE in the project root for license information.
+// </copyright>
 
 namespace Task23
 {
-    internal class Program
-    {
-        private static void Main(string[] args)
-        {
-            IStack testStack = null;
+    using System;
 
-            while (testStack == null)
+    public class Program
+    {
+        private static void Main()
+        {
+            IStack stack = null;
+
+            while (stack == null)
             {
-                Console.WriteLine("Enter stack type:");
+                Console.WriteLine("Enter stack type (array or list):");
                 var stackType = Console.ReadLine();
 
                 switch (stackType?.ToLower())
                 {
                     case "array":
-                        testStack = new StackArray();
+                        stack = new StackArray();
                         break;
                     case "list":
-                        testStack = new StackList();
+                        stack = new StackList();
                         break;
                     default:
                         Console.WriteLine("Failed.");
@@ -27,12 +31,13 @@ namespace Task23
                 }
             }
 
-            var testStackCalculator = new StackCalculator(testStack);
+            var stackCalculator = new StackCalculator(stack);
 
             var active = true;
 
             while (active)
             {
+                Console.WriteLine("Enter number or operation (+, -, *, /):");
                 var inputString = Console.ReadLine();
 
                 try
@@ -40,27 +45,31 @@ namespace Task23
                     switch (inputString?.ToLower())
                     {
                         case "result":
-                            Console.WriteLine(testStackCalculator.Pop());
+                            Console.WriteLine(stackCalculator.Pop());
                             active = false;
                             break;
                         case "+":
-                            testStackCalculator.Add();
+                            stackCalculator.Add();
                             break;
                         case "-":
-                            testStackCalculator.Subtract();
+                            stackCalculator.Subtract();
                             break;
                         case "*":
-                            testStackCalculator.Multiply();
+                            stackCalculator.Multiply();
                             break;
                         case "/":
-                            testStackCalculator.Divide();
+                            stackCalculator.Divide();
                             break;
                         default:
                         {
-                            if (int.TryParse(inputString, out var number) == false)
+                            if (!int.TryParse(inputString, out var number))
+                            {
                                 Console.WriteLine("Wrong input.");
+                            }
                             else
-                                testStackCalculator.Push(number);
+                            {
+                                stackCalculator.Push(number);
+                            }
 
                             break;
                         }
@@ -69,6 +78,11 @@ namespace Task23
                 catch (InvalidOperationException)
                 {
                     Console.WriteLine("Wrong operation.");
+                }
+                catch (DivideByZeroException)
+                {
+                    Console.WriteLine("Zero division error");
+                    active = false;
                 }
             }
         }
