@@ -10,5 +10,5 @@ build:
 
 test_script:
   - dotnet test Task21/Task21.sln
-  - OpenCover.Console.exe -register -target:"C:/Program Files/dotnet/dotnet.exe" -targetargs:"test --logger:trx;LogFileName=results.trx /p:DebugType=full C:\projects\hw\Task21\Task21.Tests\Task21.Test.csproj" -filter:"+[Task21*]* -[Task21.Test*]*" -output:".\my_app_coverage.xml"
+  - OpenCover.Console.exe -register -target:"C:/Program Files/dotnet/dotnet.exe" -targetargs:"test --logger:trx;LogFileName=results.trx /p:DebugType=full C:\projects\hw\Task21\Task21.Test\Task21.Test.csproj" -filter:"+[Task21*]* -[Task21.Test*]*" -output:".\my_app_coverage.xml"
   - codecov -f .\my_app_coverage.xml -t 5382e166-51cc-44e6-bf48-6a45c18b6ebd
