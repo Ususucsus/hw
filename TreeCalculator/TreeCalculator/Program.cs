@@ -1,8 +1,12 @@
-﻿using System;
-using System.IO;
+﻿// <copyright file="Program.cs" company="Artur Usmanov">
+//      Licensed under the MIT License. See LICENSE in the project root for license information.
+// </copyright>
 
 namespace TreeCalculator
 {
+    using System;
+    using System.IO;
+
     internal class Program
     {
         public static void Main()

@@ -1,7 +1,11 @@
-﻿using System;
+﻿// <copyright file="ValueTreeElement.cs" company="Artur Usmanov">
+//      Licensed under the MIT License. See LICENSE in the project root for license information.
+// </copyright>
 
 namespace TreeCalculator
 {
+    using System;
+
     /// <summary>
     /// Represents list element with value in it.
     /// </summary>
@@ -15,16 +19,14 @@ namespace TreeCalculator
         /// <summary>
         /// Initializes a new instance of the <see cref="ValueTreeElement"/> class.
         /// </summary>
-        /// <param name="value">Value of the element</param>
+        /// <param name="value">Value of the element.</param>
         public ValueTreeElement(int value)
-        {
-            this.value = value;
-        }
+            => this.value = value;
 
         /// <summary>
         /// Gets or sets pointer to the left son.
         /// </summary>
-        /// <exception cref="InvalidOperationException">Attempt to set something to left subtree</exception>
+        /// <exception cref="InvalidOperationException">Attempt to set something to left sub tree.</exception>
         public ITreeElement LeftTreeElement
         {
             get => null;
@@ -34,7 +36,7 @@ namespace TreeCalculator
         /// <summary>
         /// Gets or sets pointer to the right son.
         /// </summary>
-        /// <exception cref="InvalidOperationException">Attempt to set something to right subtree</exception>
+        /// <exception cref="InvalidOperationException">Attempt to set something to right sub tree.</exception>
         public ITreeElement RightTreeElement
         {
             get => null;
@@ -42,21 +44,17 @@ namespace TreeCalculator
         }
 
         /// <summary>
-        /// Returns value of the element
+        /// Returns value of the element.
         /// </summary>
-        /// <returns>value of the element</returns>
-        public int Evaluate()
-        {
-            return this.value;
-        }
+        /// <returns>Value of the element.</returns>
+        public int Evaluate() 
+            => this.value;
 
         /// <summary>
-        /// Returns string with value of the element
+        /// Returns string with value of the element.
         /// </summary>
-        /// <returns>value of the element</returns>
-        public override string ToString()
-        {
-            return this.value.ToString();
-        }
+        /// <returns>Value of the element.</returns>
+        public override string ToString() 
+            => this.value.ToString();
     }
 }

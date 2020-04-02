@@ -1,7 +1,11 @@
-﻿using System;
+﻿// <copyright file="OperationTreeElement.cs" company="Artur Usmanov">
+//      Licensed under the MIT License. See LICENSE in the project root for license information.
+// </copyright>
 
 namespace TreeCalculator
 {
+    using System;
+
     /// <summary>
     /// Provides abstract class for operation tree elements.
     /// </summary>
@@ -20,8 +24,8 @@ namespace TreeCalculator
         /// <summary>
         /// Initializes a new instance of the <see cref="OperationTreeElement"/> class.
         /// </summary>
-        /// <param name="leftTreeElement">Pointer to the left son</param>
-        /// <param name="rightTreeElement">Pointer to the right son</param>
+        /// <param name="leftTreeElement">Pointer to the left son.</param>
+        /// <param name="rightTreeElement">Pointer to the right son.</param>
         protected OperationTreeElement(ITreeElement leftTreeElement, ITreeElement rightTreeElement)
         {
             this.LeftTreeElement = leftTreeElement ?? throw new ArgumentNullException(nameof(leftTreeElement));
@@ -31,7 +35,7 @@ namespace TreeCalculator
         /// <summary>
         /// Gets or sets pointer to the left son.
         /// </summary>
-        /// <exception cref="ArgumentNullException">Attempt to set empty sub tree</exception>
+        /// <exception cref="ArgumentNullException">Attempt to set empty sub tree.</exception>
         public ITreeElement LeftTreeElement
         {
             get => this.leftTreeElement;
@@ -40,7 +44,7 @@ namespace TreeCalculator
 
         /// <summary>
         /// Gets or sets pointer to the right son.
-        /// <exception cref="ArgumentNullException">Attempt to set empty sub tree</exception>
+        /// <exception cref="ArgumentNullException">Attempt to set empty sub tree.</exception>
         /// </summary>
         public ITreeElement RightTreeElement
         {
@@ -51,7 +55,7 @@ namespace TreeCalculator
         /// <summary>
         /// Returns result of operation.
         /// </summary>
-        /// <returns>Result of operation</returns>
+        /// <returns>Result of operation.</returns>
         public abstract int Evaluate();
     }
 }

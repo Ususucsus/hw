@@ -6,4 +6,11 @@
     <DebugType>Full</DebugType>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Update="Evaluator.cs">
+      <ExcludeFromSourceAnalysis>False</ExcludeFromSourceAnalysis>
+      <ExcludeFromStyleCop>False</ExcludeFromStyleCop>
+    </Compile>
+  </ItemGroup>
+
 </Project>
