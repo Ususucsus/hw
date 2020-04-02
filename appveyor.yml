@@ -1,0 +1,14 @@
+image: Visual Studio 2019
+
+before_build:
+  - nuget restore ConsoleMovements/ConsoleMovements.sln
+  - choco install opencover.portable
+  - choco install codecov
+
+build:
+  project: ConsoleMovements/ConsoleMovements.sln
+
+test_script:
+  - dotnet test ConsoleMovements/ConsoleMovements.sln
+  - OpenCover.Console.exe -register -target:"C:/Program Files/dotnet/dotnet.exe" -targetargs:"test --logger:trx;LogFileName=results.trx /p:DebugType=full C:\projects\hw\ConsoleMovements\ConsoleMovements.Test\ConsoleMovements.Test.csproj" -filter:"+[ConsoleMovements*]* -[ConsoleMovements.Test*]*" -output:".\my_app_coverage.xml"
+  - codecov -f .\my_app_coverage.xml -t 5382e166-51cc-44e6-bf48-6a45c18b6ebd
