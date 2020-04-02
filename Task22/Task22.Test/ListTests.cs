@@ -147,5 +147,17 @@ namespace Task22.Test
 
             Assert.IsTrue(newList.IsEmpty());
         }
+
+        [Test]
+        public void EmptyListToString()
+        {
+            Assert.AreEqual("List: ", list.ToString());
+        }
+
+        [Test]
+        public void ListToString()
+        {
+            Assert.AreEqual("List: kek, lol", arrayList.ToString());
+        }
     }
 }
