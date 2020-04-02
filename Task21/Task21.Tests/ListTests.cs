@@ -148,6 +148,18 @@ namespace Task21.Test
         }
 
         [Test]
+        public void EmptyListToString()
+        {
+            Assert.AreEqual("List: ", list.ToString());
+        }
+
+        [Test]
+        public void ListToString()
+        {
+            Assert.AreEqual("List: 1, 2", arrayList.ToString());
+        }
+
+        [Test]
         public void ContainsValueOnEmptyListShouldWorkCorrect()
         {
             Assert.IsFalse(list.ContainsValue(5));
