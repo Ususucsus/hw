@@ -1,0 +1,14 @@
+image: Visual Studio 2019
+
+before_build:
+  - nuget restore Task22/Task22.sln
+  - choco install opencover.portable
+  - choco install codecov
+
+build:
+  project: Task22/Task22.sln
+
+test_script:
+  - dotnet test Task22/Task22.sln
+  - OpenCover.Console.exe -register -target:"C:/Program Files/dotnet/dotnet.exe" -targetargs:"test --logger:trx;LogFileName=results.trx /p:DebugType=full C:\projects\hw\Task22\Task22.Test\Task22.Test.csproj" -filter:"+[Task22*]* -[Task22.Test*]*" -output:".\my_app_coverage.xml"
+  - codecov -f .\my_app_coverage.xml -t 5382e166-51cc-44e6-bf48-6a45c18b6ebd
