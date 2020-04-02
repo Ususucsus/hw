@@ -1,10 +1,8 @@
-﻿using System;
-
-namespace Task21
+﻿namespace Task21
 {
-    internal class Program
+    public class Program
     {
-        private static void Main(string[] args)
+        private static void Main()
         {
         }
     }

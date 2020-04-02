@@ -1,53 +1,50 @@
-﻿using System;
+﻿// <copyright file="List.cs" company="Artur Usmanov">
+//      Licensed under the MIT License. See LICENSE in the project root for license information.
+// </copyright>
 
 namespace Task21
 {
+    using System;
+
     /// <summary>
-    /// Represents a list of integers. Provides methods to insert, remove and change integers in the list.
+    /// Class provides list structure.
     /// </summary>
     public class List
     {
         /// <summary>
-        /// Provides a list element with data and pointer to next list element.
+        /// Pointer to the first element in the list.
         /// </summary>
-        private class ListElement
+        private ListElement head;
+
+        /// <summary>
+        /// Length of the list.
+        /// </summary>
+        private int length;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="List"/> class.
+        /// </summary>
+        public List()
         {
-            /// <summary>
-            /// Initializes a new instance of <see cref="ListElement"/> class.
-            /// </summary>
-            /// <param name="data">integer value</param>
-            /// <param name="next">Pointer to next list element</param>
-            public ListElement(int data, ListElement? next)
-            {
-                this.Data = data;
-                this.Next = next;
-            }
-
-            /// <summary>
-            /// List element value.
-            /// </summary>
-            public int Data;
-
-            /// <summary>
-            /// Pointer to next list element.
-            /// </summary>
-            public ListElement? Next;
+            this.head = null;
+            this.length = 0;
         }
 
         /// <summary>
-        /// Initializes a new instance of <see cref="List"/> class.
+        /// Initializes a new instance of the <see cref="List"/> class.
         /// </summary>
-        /// <param name="array">Array from which list will be build</param>
+        /// <param name="array">Array of items that will be added in the list.</param>
         public List(int[] array)
         {
             if (array.Length == 0)
             {
-                head = null;
+                this.head = null;
+                this.length = 0;
                 return;
             }
 
-            head = new ListElement(array[0], null);
-            var prev = head;
+            this.head = new ListElement(array[0], null);
+            var prev = this.head;
 
             for (var i = 1; i < array.Length; ++i)
             {
@@ -59,155 +56,120 @@ namespace Task21
         }
 
         /// <summary>
-        /// Initializes a new instance of <see cref="List"/> class.
+        /// Returns element value at given position.
         /// </summary>
-        public List()
-        {
-            head = null;
-        }
-
-        /// <summary>
-        /// Returns value of element at given position.
-        /// </summary>
-        /// <param name="position">Position of element which value should be returned</param>
-        /// <exception cref="ArgumentOutOfRangeException">Position is less than 0 or more or equal than length of the list</exception>
-        /// <returns>Value of element</returns>
+        /// <param name="position">Position of element which value will be returned.</param>
+        /// <returns>Element value at given position.</returns>
+        /// <exception cref="ArgumentOutOfRangeException">Position out of range.</exception>
         public int GetValue(int position)
-        {
-            if (position < 0 || position >= length)
-                throw new ArgumentOutOfRangeException();
-
-            return GetNode(position)!.Data;
-        }
+            => this.GetNode(position).Data;
 
         /// <summary>
-        /// Set value of element at given position.
+        /// Sets element value at given position.
         /// </summary>
-        /// <param name="position">Position of element which value should be changed</param>
-        /// <param name="value">Value which should be set</param>
-        /// <exception cref="ArgumentOutOfRangeException">Position is less than 0 or more or equal than length of the list</exception>
+        /// <param name="position">Position of element which value will be changed.</param>
+        /// <param name="value">Value that will be set.</param>
+        /// <exception cref="ArgumentOutOfRangeException">Position out of range.</exception>
         public void SetValue(int position, int value)
-        {
-            if (position < 0 || position >= length)
-                throw new ArgumentOutOfRangeException();
-
-            GetNode(position)!.Data = value;
-        }
+            => this.GetNode(position).Data = value;
 
         /// <summary>
-        /// Inserts new list element to given position.
+        /// Inserts a new element in the list.
         /// </summary>
-        /// <param name="position">Position of the new list element</param>
-        /// <param name="value">Value of the new list element</param>
-        /// <exception cref="ArgumentOutOfRangeException">Position is less than 0 or more than length of the list</exception>
+        /// <param name="position">Position of new element.</param>
+        /// <param name="value">Value of new element.</param>
+        /// <exception cref="ArgumentOutOfRangeException">Position out of range.</exception>
         public virtual void Insert(int position, int value)
         {
-            if (position < 0 || position > length)
-                throw new ArgumentOutOfRangeException();
-
             var newNode = new ListElement(value, null);
 
             if (position == 0)
             {
-                var tempNode = head;
-                head = newNode;
+                var tempNode = this.head;
+                this.head = newNode;
                 newNode.Next = tempNode;
             }
             else
             {
-                var prevNode = GetNode(position - 1);
-                newNode.Next = prevNode!.Next;
+                var prevNode = this.GetNode(position - 1);
+                newNode.Next = prevNode.Next;
                 prevNode.Next = newNode;
             }
 
-            ++length;
+            ++this.length;
         }
 
         /// <summary>
-        /// Removes list element at given position.
+        /// Removes element at given position.
         /// </summary>
-        /// <param name="position">Position of element which should be removed</param>
-        /// <exception cref="ArgumentOutOfRangeException">Position is less than 0 or more or equal than length of the list</exception>
+        /// <param name="position">Position of element that will be removed.</param>
+        /// <exception cref="ArgumentOutOfRangeException">Position out of range.</exception>
         public void Remove(int position)
         {
-            if (position < 0 || position >= length)
-                throw new ArgumentOutOfRangeException();
-
-            if (position == 0)
-                head = head!.Next;
+            if (position == 0 && this.length != 0)
+            {
+                this.head = this.head.Next;
+            }
             else
             {
-                var prevNode = GetNode(position - 1);
-                prevNode!.Next = GetNode(position)!.Next;
+                var prevNode = this.GetNode(position - 1);
+                prevNode.Next = this.GetNode(position).Next;
             }
 
-            --length;
+            --this.length;
         }
+
+        /// <summary>
+        /// Returns length of the list.
+        /// </summary>
+        /// <returns>Length of the list.</returns>
+        public int Length()
+            => this.length;
+
+        /// <summary>
+        /// Returns true if list is empty or false otherwise.
+        /// </summary>
+        /// <returns>True if list if empty or false otherwise.</returns>
+        public bool IsEmpty()
+            => this.length == 0;
 
         /// <summary>
         /// Checks if value contains in list.
         /// </summary>
-        /// <param name="value">Value to be checked</param>
-        /// <returns>true if value contains in list, false otherwise</returns>
+        /// <param name="value">Value to be checked.</param>
+        /// <returns>true if value contains in list, false otherwise.</returns>
         public bool ContainsValue(int value)
         {
-            var currentListElement = head;
+            var currentListElement = this.head;
             while (currentListElement != null)
             {
                 if (currentListElement.Data == value)
+                {
                     return true;
+                }
 
-                currentListElement = head!.Next;
+                currentListElement = this.head.Next;
             }
 
             return false;
         }
 
         /// <summary>
-        /// Returns length of the list.
-        /// </summary>
-        /// <returns>Length of the list</returns>
-        public int Length()
-            => this.length;
-
-        /// <summary>
-        /// Checks if the list is empty.
-        /// </summary>
-        /// <returns>true if the list is empty, false otherwise</returns>
-        public bool IsEmpty()
-            => this.length == 0;
-
-        /// <summary>
-        /// Returns list element at given position.
-        /// </summary>
-        /// <param name="position">Position of element which should be returned.</param>
-        /// <returns>List element at given position or null when list element isn't exist at given position</returns>
-        private ListElement? GetNode(int position)
-        {
-            if (position < 0 || position >= length)
-                return null;
-
-            var currentNode = head;
-            for (var i = 0; i < position; ++i)
-                currentNode = currentNode!.Next;
-
-            return currentNode;
-        }
-
-        /// <summary>
         /// Returns string representation of the list.
         /// </summary>
-        /// <returns>string representation of the list</returns>
+        /// <returns>String representation of the list.</returns>
         public override string ToString()
         {
             var listString = "List: ";
 
-            if (head == null)
+            if (this.head == null)
+            {
                 return listString;
+            }
 
-            listString += $"{head.Data}";
+            listString += $"{this.head.Data}";
 
-            var currentNode = head.Next;
+            var currentNode = this.head.Next;
             while (currentNode != null)
             {
                 listString += $", {currentNode.Data}";
@@ -219,13 +181,52 @@ namespace Task21
         }
 
         /// <summary>
-        /// Head list element.
+        /// Returns pointer to the element at given position.
         /// </summary>
-        private ListElement? head;
+        /// <param name="position">Position of element that will be returned.</param>
+        /// <returns>Pointer to the element.</returns>
+        /// <exception cref="ArgumentOutOfRangeException">Position out of range.</exception>
+        private ListElement GetNode(int position)
+        {
+            if (position < 0 || position >= this.length)
+            {
+                throw new ArgumentOutOfRangeException(nameof(position));
+            }
+
+            var currentNode = this.head;
+            for (var i = 0; i < position; ++i)
+            {
+                currentNode = currentNode.Next;
+            }
+
+            return currentNode;
+        }
 
         /// <summary>
-        /// Length of the list.
+        /// Represents class for list element.
         /// </summary>
-        private int length;
+        private class ListElement
+        {
+            /// <summary>
+            /// Initializes a new instance of the <see cref="ListElement"/> class.
+            /// </summary>
+            /// <param name="data">Value of the element.</param>
+            /// <param name="next">Pointer to the next element in list or null if last.</param>
+            public ListElement(int data, ListElement next)
+            {
+                this.Data = data;
+                this.Next = next;
+            }
+
+            /// <summary>
+            /// Gets or sets value of the element.
+            /// </summary>
+            public int Data { get; set; }
+
+            /// <summary>
+            /// Gets or sets pointer to the next element in list or null if last.
+            /// </summary>
+            public ListElement Next { get; set; }
+        }
     }
 }
