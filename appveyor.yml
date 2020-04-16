@@ -1,7 +1,7 @@
 image: Visual Studio 2019
 
 before_build:
-  - nuget restore Task23/Task23.sln
+  - nuget restore Task21/Task21.sln
   - choco install opencover.portable
   - choco install codecov
 
