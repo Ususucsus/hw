@@ -1,7 +1,11 @@
-﻿using NUnit.Framework;
+﻿// <copyright file="LengthHashFunctionTests.cs" company="Artur Usmanov">
+//      Licensed under the MIT License. See LICENSE in the project root for license information.
+// </copyright>
 
 namespace Task22.Test
 {
+    using NUnit.Framework;
+
     public class LengthHashFunctionTests
     {
         private LengthHashFunction hashFunction;
@@ -15,13 +19,13 @@ namespace Task22.Test
         [Test]
         public void HashOfEmptyStringShouldBeZero()
         {
-            Assert.AreEqual(hashFunction.GetHashValue(""), 0);
+            Assert.AreEqual(0, hashFunction.GetHashValue(""));
         }
 
         [Test]
         public void HashOfNonEmptyStringShouldBeLengthOfTheString()
         {
-            Assert.AreEqual(hashFunction.GetHashValue("kek"), 3);
+            Assert.AreEqual(3, hashFunction.GetHashValue("kek"));
         }
     }
 }

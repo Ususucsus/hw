@@ -24,7 +24,7 @@ namespace Task22
         /// <summary>
         /// Hash function for calculating hash.
         /// </summary>
-        private readonly IHashFunction hashFunction;
+        private IHashFunction hashFunction;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="HashTable"/> class.
@@ -95,6 +95,27 @@ namespace Task22
                 {
                     this.array[hashValue].Remove(i);
                     return;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Changes hash function.
+        /// </summary>
+        /// <param name="newHashFunction">New hash function.</param>
+        public void ChangeHashFunction(IHashFunction newHashFunction)
+        {
+            this.hashFunction = newHashFunction;
+
+            foreach (var list in this.array)
+            {
+                var length = list.Length();
+
+                for (var i = 0; i < length; ++i)
+                {
+                    var value = list.GetValue(0);
+                    list.Remove(0);
+                    this.Insert(value);
                 }
             }
         }

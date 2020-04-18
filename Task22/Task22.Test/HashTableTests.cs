@@ -1,9 +1,13 @@
-﻿using System;
-using NUnit.Framework;
+﻿// <copyright file="HashTableTests.cs" company="Artur Usmanov">
+//      Licensed under the MIT License. See LICENSE in the project root for license information.
+// </copyright>
 
 namespace Task22.Test
 {
-    public class HastTableTests
+    using System;
+    using NUnit.Framework;
+
+    public class HashTableTests
     {
         private HashTable hashTable;
 
@@ -71,10 +75,30 @@ namespace Task22.Test
         public void InsertManyShouldWorkCorrect()
         {
             for (var i = 0; i < 100; ++i)
+            {
                 hashTable.Insert(i.ToString());
+            }
 
             for (var i = 0; i < 100; ++i)
+            {
                 Assert.IsTrue(hashTable.ContainsValue(i.ToString()));
+            }
+        }
+
+        [Test]
+        public void ChangeFunctionShouldWorkCorrect()
+        {
+            for (var i = 0; i < 100; ++i)
+            {
+                hashTable.Insert(i.ToString());
+            }
+
+            hashTable.ChangeHashFunction(new StandardHashFunction());
+
+            for (var i = 0; i < 100; ++i)
+            {
+                Assert.IsTrue(hashTable.ContainsValue(i.ToString()));
+            }
         }
     }
 }

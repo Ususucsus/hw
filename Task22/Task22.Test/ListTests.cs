@@ -1,8 +1,9 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using NUnit.Framework;
+// <copyright file="ListTests.cs" company="Artur Usmanov">
+//      Licensed under the MIT License. See LICENSE in the project root for license information.
+// </copyright>
 
+using System;
+using NUnit.Framework;
 
 namespace Task22.Test
 {
@@ -33,19 +34,19 @@ namespace Task22.Test
         [Test]
         public void LengthOfInitializedListShouldBeCorrect()
         {
-            Assert.AreEqual(arrayList.Length(), 2);
+            Assert.AreEqual(2, arrayList.Length());
         }
 
         [Test]
         public void LengthOfNewListShouldBeZero()
         {
-            Assert.AreEqual(list.Length(), 0);
+            Assert.AreEqual(0, list.Length());
         }
 
         [Test]
         public void GetValueWithinLimitsShouldReturnCorrectValue()
         {
-            Assert.AreEqual(arrayList.GetValue(1), "lol");
+            Assert.AreEqual("lol", arrayList.GetValue(1));
         }
 
         [Test]
@@ -61,7 +62,7 @@ namespace Task22.Test
         {
             arrayList.SetValue(0, "ne kek");
 
-            Assert.AreEqual(arrayList.GetValue(0), "ne kek");
+            Assert.AreEqual("ne kek", arrayList.GetValue(0));
         }
 
         [Test]
@@ -78,8 +79,8 @@ namespace Task22.Test
             var lengthBeforeRemove = arrayList.Length();
             arrayList.Remove(0);
 
-            Assert.AreEqual(arrayList.Length(), lengthBeforeRemove - 1);
-            Assert.AreEqual(arrayList.GetValue(0), "lol");
+            Assert.AreEqual(lengthBeforeRemove - 1, arrayList.Length());
+            Assert.AreEqual("lol", arrayList.GetValue(0));
         }
 
         [Test]
@@ -88,11 +89,10 @@ namespace Task22.Test
             var lengthBeforeRemove = arrayList.Length();
             arrayList.Remove(1);
 
-            Assert.AreEqual(arrayList.Length(), lengthBeforeRemove - 1);
-            Assert.AreEqual(arrayList.GetValue(0), "kek");
+            Assert.AreEqual(lengthBeforeRemove - 1, arrayList.Length());
+            Assert.AreEqual("kek", arrayList.GetValue(0));
         }
         
-
         [Test]
         public void RemoveBeyondLimitsShouldThrowException()
         {
@@ -107,9 +107,9 @@ namespace Task22.Test
             var lengthBeforeInsert = arrayList.Length();
             arrayList.Insert(1, "mem");
 
-            Assert.AreEqual(arrayList.Length(), lengthBeforeInsert + 1);
-            Assert.AreEqual(arrayList.GetValue(2), "lol");
-            Assert.AreEqual(arrayList.GetValue(1), "mem");
+            Assert.AreEqual(lengthBeforeInsert + 1, arrayList.Length());
+            Assert.AreEqual("lol", arrayList.GetValue(2));
+            Assert.AreEqual("mem", arrayList.GetValue(1));
         }
 
         [Test]
@@ -118,9 +118,9 @@ namespace Task22.Test
             var lengthBeforeInsert = arrayList.Length();
             arrayList.Insert(0, "mem");
 
-            Assert.AreEqual(arrayList.Length(), lengthBeforeInsert + 1);
-            Assert.AreEqual(arrayList.GetValue(1), "kek");
-            Assert.AreEqual(arrayList.GetValue(0), "mem");
+            Assert.AreEqual(lengthBeforeInsert + 1, arrayList.Length());
+            Assert.AreEqual("kek", arrayList.GetValue(1));
+            Assert.AreEqual("mem", arrayList.GetValue(0));
         }
 
         [Test]
