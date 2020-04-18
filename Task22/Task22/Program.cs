@@ -1,21 +1,13 @@
-﻿using System;
+﻿// <copyright file="Main.cs" company="Artur Usmanov">
+//      Licensed under the MIT License. See LICENSE in the project root for license information.
+// </copyright>
 
 namespace Task22
 {
     internal class Program
     {
-        private static void Main(string[] args)
+        private static void Main()
         {
-            var testHashTable = new HashTable(10);
-            testHashTable.Insert("lolkek");
-            Console.WriteLine(testHashTable.ContainsValue("lolkek"));
-            Console.WriteLine(testHashTable.ContainsValue("keklol"));
-            testHashTable.Remove("keklol");
-            Console.WriteLine(testHashTable.ContainsValue("lolkek"));
-            Console.WriteLine(testHashTable.ContainsValue("keklol"));
-            testHashTable.Remove("lolkek");
-            Console.WriteLine(testHashTable.ContainsValue("lolkek"));
-            Console.WriteLine(testHashTable.ContainsValue("keklol"));
         }
     }
 }
