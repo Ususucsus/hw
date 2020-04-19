@@ -24,26 +24,6 @@ namespace TreeCalculator
             => this.value = value;
 
         /// <summary>
-        /// Gets or sets pointer to the left son.
-        /// </summary>
-        /// <exception cref="InvalidOperationException">Attempt to set something to left sub tree.</exception>
-        public ITreeElement LeftTreeElement
-        {
-            get => null;
-            set => throw new InvalidOperationException("Value element could not contain sub trees");
-        }
-
-        /// <summary>
-        /// Gets or sets pointer to the right son.
-        /// </summary>
-        /// <exception cref="InvalidOperationException">Attempt to set something to right sub tree.</exception>
-        public ITreeElement RightTreeElement
-        {
-            get => null;
-            set => throw new InvalidOperationException("Value element could not contain sub trees");
-        }
-
-        /// <summary>
         /// Returns value of the element.
         /// </summary>
         /// <returns>Value of the element.</returns>

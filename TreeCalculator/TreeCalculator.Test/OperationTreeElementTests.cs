@@ -1,10 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Runtime.InteropServices.ComTypes;
-using NUnit.Framework;
+﻿// <copyright file="OperationTreeElementTests.cs" company="Artur Usmanov">
+//      Licensed under the MIT License. See LICENSE in the project root for license information.
+// </copyright>
 
 namespace TreeCalculator.Test
 {
+    using System;
+    using System.Collections.Generic;
+    using NUnit.Framework;
+
     public class OperationTreeElementTests
     {
         private static IEnumerable<TestCaseData> OperationsWithValueElements
@@ -51,24 +54,15 @@ namespace TreeCalculator.Test
                     .Returns(5), 
             };
 
-        [SetUp]
-        public void Setup()
-        {
-        }
-
         [Test]
         [TestCaseSource(nameof(OperationsWithValueElements))]
         public int OperationWithValueElementsShouldWorkCorrect(OperationTreeElement operationTreeElement)
-        {
-            return operationTreeElement.Evaluate();
-        }
+            => operationTreeElement.Evaluate();
 
         [Test]
         [TestCaseSource(nameof(OperationsWithOperationsElements))]
         public int OperationWithOperationElementsShouldWorkCorrect(OperationTreeElement operationTreeElement)
-        {
-            return operationTreeElement.Evaluate();
-        }
+            => operationTreeElement.Evaluate();
 
         [Test]
         public void AttemptToSetNullSubTreeShouldThrowException()

@@ -7,7 +7,7 @@ namespace TreeCalculator
     /// <summary>
     /// Represents subtraction operation tree element.
     /// </summary>
-    public class SubtractionOperationTreeElement : OperationTreeElement, ITreeElement
+    public class SubtractionOperationTreeElement : OperationTreeElement
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="SubtractionOperationTreeElement"/> class.

@@ -1,4 +1,6 @@
-using System;
+// <copyright file="ValueTreeElementTests.cs" company="Artur Usmanov">
+//      Licensed under the MIT License. See LICENSE in the project root for license information.
+// </copyright>
 
 namespace TreeCalculator.Test
 {
@@ -17,27 +19,13 @@ namespace TreeCalculator.Test
         [Test]
         public void EvaluateShouldReturnCorrectValue()
         {
-            Assert.AreEqual(this.treeElement.Evaluate(), 5);
+            Assert.AreEqual(5, this.treeElement.Evaluate());
         }
 
         [Test]
         public void ToStringShouldReturnCorrectString()
         {
-            Assert.AreEqual(this.treeElement.ToString(), "5");
-        }
-
-        [Test]
-        public void AttemptToSetSubTreeShouldThrowException()
-        {
-            Assert.Throws<InvalidOperationException>(() => treeElement.LeftTreeElement = new ValueTreeElement(5));
-            Assert.Throws<InvalidOperationException>((() => treeElement.RightTreeElement = new ValueTreeElement(5)));
-        }
-
-        [Test]
-        public void GetsSubTreesShouldReturnNull()
-        {
-            Assert.IsNull(treeElement.LeftTreeElement);
-            Assert.IsNull(treeElement.RightTreeElement);
+            Assert.AreEqual("5", this.treeElement.ToString());
         }
     }
 }

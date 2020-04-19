@@ -1,8 +1,12 @@
-﻿using System;
-using NUnit.Framework;
+﻿// <copyright file="EvaluatorTests.cs" company="Artur Usmanov">
+//      Licensed under the MIT License. See LICENSE in the project root for license information.
+// </copyright>
 
 namespace TreeCalculator.Test
 {
+    using System;
+    using NUnit.Framework;
+
     public class EvaluatorTests
     {
         private Evaluator evaluator;
@@ -19,9 +23,7 @@ namespace TreeCalculator.Test
         [TestCase("(- 0 -10)", ExpectedResult = 10)]
         [TestCase("(/ 2 5)", ExpectedResult = 0)]
         public int SimpleEvaluatorShouldGiveCorrectAnswer(string expression)
-        {
-            return evaluator.EvaluateExpression(expression);
-        }
+            => evaluator.EvaluateExpression(expression);
 
         [Test]
         [TestCase("(* (+ 2 2) 5)", ExpectedResult = 20)]
@@ -29,10 +31,8 @@ namespace TreeCalculator.Test
         [TestCase("(- (* (+ 2 2) 5) 20)", ExpectedResult = 0)]
         [TestCase("(+ (+ 2 2) (+ 2 2))", ExpectedResult = 8)]
         [TestCase("(/ (* 100 0) 10000)", ExpectedResult = 0)]
-        public int EvaluatorShouldGiveCorrectAnswer(string expression)
-        {
-            return evaluator.EvaluateExpression(expression);
-        }
+        public int EvaluatorShouldGiveCorrectAnswer(string expression) 
+            => evaluator.EvaluateExpression(expression);
 
         [Test]
         [TestCase("")]

@@ -113,11 +113,26 @@ namespace TreeCalculator
         {
             while (true)
             {
-                if (node == null) return;
-                PrintTreeCalculator(node.LeftTreeElement, offset + 3);
-                for (var i = 0; i < offset; ++i) Console.Write(" ");
+                if (node is ValueTreeElement)
+                {
+                    for (var i = 0; i < offset; ++i)
+                    {
+                        Console.Write(" ");
+                    }
+
+                    Console.WriteLine(node);
+                    break;
+                }
+
+                PrintTreeCalculator(((OperationTreeElement)node).LeftTreeElement, offset + 3);
+
+                for (var i = 0; i < offset; ++i)
+                {
+                    Console.Write(" ");
+                }
                 Console.WriteLine(node);
-                node = node.RightTreeElement;
+
+                node = ((OperationTreeElement) node).RightTreeElement;
                 offset += 3;
             }
         }
