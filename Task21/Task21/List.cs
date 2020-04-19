@@ -33,7 +33,7 @@ namespace Task21
         /// <summary>
         /// Initializes a new instance of the <see cref="List"/> class.
         /// </summary>
-        /// <param name="array">Array of items that will be added in the list</param>
+        /// <param name="array">Array of items that will be added in the list.</param>
         public List(int[] array)
         {
             if (array.Length == 0)
@@ -58,28 +58,19 @@ namespace Task21
         /// <summary>
         /// Returns element value at given position.
         /// </summary>
-        /// <param name="position">Position of element which value will be returned</param>
-        /// <returns>Element value at given position</returns>
-        /// <exception cref="ArgumentOutOfRangeException">Position out of range</exception>
+        /// <param name="position">Position of element which value will be returned.</param>
+        /// <returns>Element value at given position.</returns>
+        /// <exception cref="ArgumentOutOfRangeException">Position out of range.</exception>
         public int GetValue(int position)
             => this.GetNode(position).Data;
 
         /// <summary>
-        /// Sets element value at given position.
-        /// </summary>
-        /// <param name="position">Position of element which value will be changed</param>
-        /// <param name="value">Value that will be set</param>
-        /// <exception cref="ArgumentOutOfRangeException">Position out of range</exception>
-        public void SetValue(int position, int value)
-            => this.GetNode(position).Data = value;
-
-        /// <summary>
         /// Inserts a new element in the list.
         /// </summary>
-        /// <param name="position">Position of new element</param>
-        /// <param name="value">Value of new element</param>
-        /// <exception cref="ArgumentOutOfRangeException">Position out of range</exception>
-        public void Insert(int position, int value)
+        /// <param name="position">Position of new element.</param>
+        /// <param name="value">Value of new element.</param>
+        /// <exception cref="ArgumentOutOfRangeException">Position out of range.</exception>
+        public virtual void Insert(int position, int value)
         {
             var newNode = new ListElement(value, null);
 
@@ -102,8 +93,8 @@ namespace Task21
         /// <summary>
         /// Removes element at given position.
         /// </summary>
-        /// <param name="position">Position of element that will be removed</param>
-        /// <exception cref="ArgumentOutOfRangeException">Position out of range</exception>
+        /// <param name="position">Position of element that will be removed.</param>
+        /// <exception cref="ArgumentOutOfRangeException">Position out of range.</exception>
         public void Remove(int position)
         {
             if (position == 0 && this.length != 0)
@@ -122,21 +113,42 @@ namespace Task21
         /// <summary>
         /// Returns length of the list.
         /// </summary>
-        /// <returns>length of the list.</returns>
+        /// <returns>Length of the list.</returns>
         public int Length()
             => this.length;
 
         /// <summary>
         /// Returns true if list is empty or false otherwise.
         /// </summary>
-        /// <returns>true if list if empty or false otherwise</returns>
+        /// <returns>True if list if empty or false otherwise.</returns>
         public bool IsEmpty()
             => this.length == 0;
 
         /// <summary>
+        /// Checks if value contains in list.
+        /// </summary>
+        /// <param name="value">Value to be checked.</param>
+        /// <returns>true if value contains in list, false otherwise.</returns>
+        public bool ContainsValue(int value)
+        {
+            var currentListElement = this.head;
+            while (currentListElement != null)
+            {
+                if (currentListElement.Data == value)
+                {
+                    return true;
+                }
+
+                currentListElement = this.head.Next;
+            }
+
+            return false;
+        }
+
+        /// <summary>
         /// Returns string representation of the list.
         /// </summary>
-        /// <returns>string representation of the list</returns>
+        /// <returns>String representation of the list.</returns>
         public override string ToString()
         {
             var listString = "List: ";
@@ -163,8 +175,8 @@ namespace Task21
         /// Returns pointer to the element at given position.
         /// </summary>
         /// <param name="position">Position of element that will be returned.</param>
-        /// <returns>pointer to the element</returns>
-        /// <exception cref="ArgumentOutOfRangeException">Position out of range</exception>
+        /// <returns>Pointer to the element.</returns>
+        /// <exception cref="ArgumentOutOfRangeException">Position out of range.</exception>
         private ListElement GetNode(int position)
         {
             if (position < 0 || position >= this.length)
@@ -189,8 +201,8 @@ namespace Task21
             /// <summary>
             /// Initializes a new instance of the <see cref="ListElement"/> class.
             /// </summary>
-            /// <param name="data">Value of the element</param>
-            /// <param name="next">Pointer to the next element in list or null if last</param>
+            /// <param name="data">Value of the element.</param>
+            /// <param name="next">Pointer to the next element in list or null if last.</param>
             public ListElement(int data, ListElement next)
             {
                 this.Data = data;
