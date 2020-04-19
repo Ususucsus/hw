@@ -65,15 +65,6 @@ namespace Task21
             => this.GetNode(position).Data;
 
         /// <summary>
-        /// Sets element value at given position.
-        /// </summary>
-        /// <param name="position">Position of element which value will be changed.</param>
-        /// <param name="value">Value that will be set.</param>
-        /// <exception cref="ArgumentOutOfRangeException">Position out of range.</exception>
-        public void SetValue(int position, int value)
-            => this.GetNode(position).Data = value;
-
-        /// <summary>
         /// Inserts a new element in the list.
         /// </summary>
         /// <param name="position">Position of new element.</param>

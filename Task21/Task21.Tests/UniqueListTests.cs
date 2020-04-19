@@ -1,4 +1,7 @@
-﻿using System;
+﻿// <copyright file="UniqueListTests.cs" company="Artur Usmanov">
+//      Licensed under the MIT License. See LICENSE in the project root for license information.
+// </copyright>
+
 using NUnit.Framework;
 
 namespace Task21.Test
