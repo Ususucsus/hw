@@ -1,8 +1,7 @@
 image: Visual Studio 2019
 
 before_build:
-  - nuget restore Clock/Clock.sln
+- nuget restore Clock/Clock.sln
 
 build:
   project: Clock/Clock.sln
-
